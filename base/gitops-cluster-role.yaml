@@ -1,3 +1,4 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -6,8 +7,9 @@ rules:
 - apiGroups: ["bitnami.com"]
   resources: ["sealedsecrets"]
   verbs: ["*"]
-
+---
 kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: manage-secrets-global
 roleRef:
@@ -18,3 +20,4 @@ subjects:
 - kind: ServiceAccount
   name: openshift-gitops-argocd-application-controller
   namespace: openshift-gitops
+---
